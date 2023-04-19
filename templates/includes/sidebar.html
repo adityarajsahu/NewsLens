@@ -1,0 +1,111 @@
+<div
+  class="sidebar"
+  data-color="purple"
+  data-background-color="white"
+  data-image="/static/assets/img/sidebar-1.jpg"
+>
+  <div class="logo">
+    <a
+      target="_blank"
+      rel="noopener noreferrer"
+      class="simple-text logo-normal"
+    >
+      Project-Suraksha
+    </a>
+  </div>
+  <div class="sidebar-wrapper">
+    <ul class="nav">
+
+        <li class="nav-item {% if 'viewProfile' in segment %} active {% endif %}">
+          <a class="nav-link" href="/viewProfile/">
+            <i class="material-icons">person</i>
+            <p>User Profile</p>
+          </a>
+        </li>
+        <li class="nav-item {% if 'enrolledPatients' in segment %} active {% endif %}">
+          <a class="nav-link" href="/enrolledPatients/">
+            <i class="material-icons">health_and_safety</i>
+            <p>Enrolled Patients</p>
+          </a>
+        </li>
+        <!-- <li class="nav-item {% if 'index' in segment %} active {% endif %}">
+          <a class="nav-link" href="/">
+            <i class="material-icons">dashboard</i>
+            <p>Dashboard</p>
+          </a>
+        </li> -->
+        <li class="nav-item {% if 'viewProfile' in segment %} active {% endif %}">
+          <a class="nav-link" href="/viewProfile/">
+            <i class="material-icons">person</i>
+            <p>User Profile</p>
+          </a>
+        </li>
+
+        <li class="nav-item {% if 'Self-Diagnosis' in segment %} active {% endif %}">
+          <a class="nav-link" href="/selfDiagnosis/">
+            <i class="material-icons">speed</i>
+            <p>Self Diagnosis</p>
+          </a>
+        </li>
+
+        <li class="nav-item {% if 'viewDoctors' in segment %} active {% endif %}">
+          <a class="nav-link" href="/viewDoctors/">
+            <i class="material-icons">medication</i>
+            <p>View Doctors</p>
+          </a>
+        </li>
+
+        <li class="nav-item {% if 'viewRequest' in segment %} active {% endif %}">
+          <a class="nav-link" href="/viewRequest/">
+            <i class="material-icons">article</i>
+            <p>Document Request</p>
+          </a>
+        </li>
+        
+        <li
+          class="nav-item {% if 'upload-prescription' in segment %} active {% endif %}"
+        >
+          <a class="nav-link" href="/viewUploadPage/">
+            <i class="material-icons">upload</i>
+            <p>Upload Prescriptions</p>
+          </a>
+        </li>
+
+        <li
+        class="nav-item {% if 'diet-recommendation' in segment %} active {% endif %}"
+      >
+        <a class="nav-link" href="/viewDietRecommendationPage/">
+          <i class="material-icons">restaurant</i>
+          <p>Diet Recommendation</p>
+        </a>
+      </li>
+
+
+      <li class="nav-item active-pro">
+        <a
+          class="nav-link"
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://github.com/alpana02/Project-Suraksha"
+        >
+          <i class="material-icons">unarchive</i>
+          <p>Github</p>
+        </a>
+      </li>
+
+
+      <li class="nav-item active">
+        <a
+          class="nav-link"
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://github.com/alpana02/Project-Suraksha"
+        >
+          <i class="material-icons">unarchive</i>
+          <p>Github</p>
+        </a>
+      </li>
+
+    </ul>
+  </div>
+</div>

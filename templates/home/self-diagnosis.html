@@ -1,0 +1,320 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} UI Tables {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+<div class="card">
+  <div class="card-header card-header-primary">
+    <h3 class="card-title">Self Diagnosis</h3>
+    <p>Fill the form below to find perfect diet chart prepared according to your needs</p>
+  </div>
+<form method="POST" action="/poemAnalyse/">
+  {% csrf_token %}
+<div class="row">
+  <div class="col-md-12">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header card-header-success">
+          <h4 class="card-title">
+            Do you have a mother, father, sister, or brother with diabetes?
+          </h4>
+          <p class="card-category">
+            (A family history of diabetes could contribute to your risk for type
+          2 diabetes.)
+          </p>
+        </div>
+        <div class="card-body">
+          <div class="form-check form-check-radio">
+            <label class="form-check-label">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="ques1"
+                id="ques1"
+                value="0"
+              />
+              No
+              <span class="circle">
+                <span class="check"></span>
+              </span>
+            </label>
+          </div>
+          <div class="form-check form-check-radio">
+            <label class="form-check-label">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="ques1"
+                id="ques1"
+                value="1"
+              />
+              Yes
+              <span class="circle">
+                <span class="check"></span>
+              </span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header card-header-success">
+          <h4 class="card-title">
+            Have you ever been diagnosed with high blood pressure?
+          </h4>
+          <p class="card-category">
+            (Having high blood pressure contributes to your overall risk for
+            type 2 diabetes)
+          </p>
+        </div>
+        <div class="card-body">
+          <div class="form-check form-check-radio">
+            <label class="form-check-label">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="ques2"
+                id="ques2"
+                value="0"
+              />
+              No
+              <span class="circle">
+                <span class="check"></span>
+              </span>
+            </label>
+          </div>
+          <div class="form-check form-check-radio">
+            <label class="form-check-label">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="ques2"
+                id="ques2"
+                value="1"
+              />
+              Yes
+              <span class="circle">
+                <span class="check"></span>
+              </span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header card-header-success">
+          <h4 class="card-title">How old are you?</h4>
+          <p class="card-category">
+            (You are at a higher risk for type 2 diabetes the older you are.)
+          </p>
+        </div>
+        <div class="card-body">
+          <div class="form-check form-check-radio">
+            <label class="form-check-label">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="ques3"
+                id="ques3"
+                value="0"
+              />
+              Younger than 40
+              <span class="circle">
+                <span class="check"></span>
+              </span>
+            </label>
+          </div>
+          <div class="form-check form-check-radio">
+            <label class="form-check-label">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="ques3"
+                id="ques3"
+                value="1"
+              />
+              40-49 Years
+              <span class="circle">
+                <span class="check"></span>
+              </span>
+            </label>
+          </div>
+          <div class="form-check form-check-radio">
+            <label class="form-check-label">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="ques3"
+                id="ques3"
+                value="2"
+              />
+              50-59 Years
+              <span class="circle">
+                <span class="check"></span>
+              </span>
+            </label>
+          </div>
+          <div class="form-check form-check-radio">
+            <label class="form-check-label">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="ques3"
+                id="ques3"
+                value="3"
+              />
+              60+ Years
+              <span class="circle">
+                <span class="check"></span>
+              </span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header card-header-success">
+          <h4 class="card-title">Are you physically active?</h4>
+          <p class="card-category">
+            (Being inactive can increase your risk for type 2 diabetes.)
+          </p>
+        </div>
+        <div class="card-body">
+          <div class="form-check form-check-radio">
+            <label class="form-check-label">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="ques4"
+                id="ques4"
+                value="1"
+              />
+              Yes
+              <span class="circle">
+                <span class="check"></span>
+              </span>
+            </label>
+          </div>
+          <div class="form-check form-check-radio">
+            <label class="form-check-label">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="ques4"
+                id="ques4"
+                value="0"
+              />
+              No
+              <span class="circle">
+                <span class="check"></span>
+              </span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header card-header-success">
+          <h4 class="card-title">Are you a man or a woman?</h4>
+          <p class="card-category">
+            (Men are more likely than women to have undiagnosed diabetes; one
+            reason may be that they are less likely to see their doctor
+            regularly.)
+          </p>
+        </div>
+        <div class="card-body">
+          <div class="form-check form-check-radio">
+            <label class="form-check-label">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="ques5"
+                id="ques5"
+                value="0"
+              />
+              Woman
+              <span class="circle">
+                <span class="check"></span>
+              </span>
+            </label>
+          </div>
+          <div class="form-check form-check-radio">
+            <label class="form-check-label">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="ques5"
+                id="ques5"
+                value="1"
+              />
+              Man
+              <span class="circle">
+                <span class="check"></span>
+              </span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="form-group form-control mt-3">
+        <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#exampleModal" onclick="handleSubmit()">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Self Assessment Score  </h5>
+        
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p id="output"></p>
+        {% if trigger %}
+          <p>You have a higher chance of getting Diabetes</p>
+          <p>Because you have {{triggerKey}}</p>
+
+        {% endif %}
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button class="btn btn-primary" type="submit">Next</button>
+      </div> -->
+    </div>
+  </div>
+  </form>
+</div>
+
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+<script>
+  function handleSubmit(){
+    ques1 = document.querySelector('input[name = "ques1"]:checked').value
+    ques2 = document.querySelector('input[name = "ques2"]:checked').value
+    ques3 = document.querySelector('input[name = "ques3"]:checked').value
+    ques4 = document.querySelector('input[name = "ques4"]:checked').value
+    ques5 = document.querySelector('input[name = "ques5"]:checked').value
+
+    var average = (parseInt(ques1) + parseInt(ques2) + parseInt(ques3) + parseInt(ques4) + parseInt(ques5))/7
+    console.log(average)
+    document.getElementById('output').innerHTML = average.toFixed(2);
+  }
+</script>
+{% endblock javascripts %}

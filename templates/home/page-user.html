@@ -1,0 +1,209 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Page User {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+          <div class="row">
+            <div class="col-md-8">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title">Edit Profile</h4>
+                  <p class="card-category">Complete your profile</p>
+                </div>
+                <div class="card-body">
+                  <form>
+                    <div class="row">
+                      <div class="col-md-5">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">UserID (disabled)</label>
+                          <input type="text" class="form-control" disabled value="{{ current_user.id }}">
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Username</label>
+                          <input type="text" class="form-control" value="{{ current_user.username }}">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Email address</label>
+                          <input type="email" class="form-control" value="{{ current_user.email }}">
+                        </div>
+                      </div>
+                    </div>
+                    <!-- <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Fist Name</label>
+                          <input type="text" class="form-control">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Last Name</label>
+                          <input type="text" class="form-control">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Adress</label>
+                          <input type="text" class="form-control">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">City</label>
+                          <input type="text" class="form-control">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Country</label>
+                          <input type="text" class="form-control">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Postal Code</label>
+                          <input type="text" class="form-control">
+                        </div>
+                      </div>
+                    </div> -->
+                    <!-- <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label>About Me</label>
+                          <div class="form-group">
+                            <label class="bmd-label-floating"> Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</label>
+                            <textarea class="form-control" rows="5"></textarea>
+                          </div>
+                        </div>
+                      </div>
+                    </div> -->
+                    <!-- <button type="submit" class="btn btn-primary pull-right">Update Profile</button> -->
+                    <div class="clearfix"></div>
+                  </form>
+                </div>
+                {% if role == 'Patient' %}
+                <div class="col-md-12">
+                  <div class="card">
+                    <div class="card-header card-header-warning">
+                      <h4 class="card-title">User Documents</h4>
+                      <!-- <p class="card-category">New employees on 15th September, 2016</p> -->
+                    </div>
+                    <div class="card-body table-responsive">
+                      <table class="table table-hover">
+                        <thead class="text-warning">
+                          <th>ID</th>
+                          <th>Document Name</th>
+                          <th>Action</th>
+                        </thead>
+                        <tbody>
+                          {% for docu in userDocs %}
+                          <tr>
+                            <td>{{forloop.counter}}</td>
+                            <td>{{docu.file}}</td>
+                            <td>  <button type="button" rel="tooltip" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal{{forloop.counter}}">
+                              <i class="material-icons">visibility</i>
+                          </button> <button type="button" rel="tooltip" class="btn btn-danger btn-sm">
+                              <i class="material-icons">close</i>
+                          </button>
+                         
+                        </td>
+                          </tr>
+                          <div class="modal fade" id="exampleModal{{forloop.counter}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel"></h5>
+                                  <embed src="{{docu.file.url}}" type="application/pdf" frameBorder="0" scrolling="auto" width="400%" height="600px"></embed>
+                                  <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button> -->
+                                </div>
+                                <div class="modal-body">
+                                  <!-- ... -->
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                  <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          {% endfor %}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="card card-chart">
+                      <div class="card-header card-header-success">
+                        <div class="ct-chart" id="dailySalesChart"></div>
+                      </div>
+                      <div class="card-body">
+                        <h4 class="card-title">Daily Self Assessment Score</h4>
+                        <p class="card-category">
+                          <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> increase in Chances.</p>
+                      </div>
+                      <div class="card-footer">
+                        <div class="stats">
+                          <i class="material-icons">access_time</i> updated 4 minutes ago
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                
+                </div>
+            {% endif %}
+
+              </div>
+
+            </div>
+            <div class="col-md-4">
+              <div class="card card-profile">
+                <div class="card-avatar">
+                  <a href="#pablo">
+                    <img class="img" src="/static/assets/img/faces/marc.jpg" />
+                  </a>
+                </div>
+                <div class="card-body">
+                  <h6 class="card-category text-gray">
+                    {{ current_user.username }}
+                  </h6>
+                  <h4 class="card-title">
+                    {{ current_user.email }}
+                  </h4>
+                  <!-- <p class="card-description">
+                    Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
+                  </p> -->
+                  <a href="#pablo" class="btn btn-primary btn-round">{{role}}</a>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+<script>
+  $(document).ready(function() {
+    // Javascript method's body can be found in assets/js/demos.js
+    md.initDashboardPageCharts();
+
+  });
+</script>
+{% endblock javascripts %}

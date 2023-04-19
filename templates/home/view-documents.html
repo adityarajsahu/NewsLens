@@ -1,0 +1,72 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}View Documents {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="card">
+  <div class="card-header card-header-warning">
+    <h4 class="card-title">View Patient Documents</h4>
+  </div>
+  <div class="card-body table-responsive">
+<table class="table">
+    <thead>
+        <tr>
+            <th class="text-center">#</th>
+            <th>Document Name</th>
+            <th class="text-right">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for docu in documentResult %}
+            <tr>
+                <td class="text-center">{{forloop.counter}}</td>
+                <td>{{docu.file}}</td>
+                {% if currentUser in docu.allowedDoctors.all %}
+                <td><btn type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal{{forloop.counter}}">View</btn></td>
+                
+                <div class="modal fade" id="exampleModal{{forloop.counter}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel"></h5>
+                          <embed src="{{docu.file.url}}" type="application/pdf" frameBorder="0" scrolling="auto" width="400%" height="600px"></embed>
+                          <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button> -->
+                        </div>
+                        <div class="modal-body">
+                          <!-- ... -->
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                {% else %}
+                <td class="td-actions text-right">
+                    <a href = '/requestDocument/{{docu.id}}/'>
+                    <btn class="btn btn-primary">Request</btn>
+                    </a>
+                </td>
+                {% endif %}
+                
+            </tr>       
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+  
+{% endblock javascripts %}

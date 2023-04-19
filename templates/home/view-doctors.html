@@ -1,0 +1,32 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}View Doctors {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+<div class="d-flex ">
+{% for doctor in doctorList %}
+<div class="card" style="width: 20rem;">
+    <div class="card-body">
+      <h4 class="card-title">{{ doctor.user.username }}</h4>
+      <h6 class="card-subtitle mb-2 text-muted">{{ doctor.age }}</h6>
+      <h6 class="card-subtitle mb-2 text-muted">{{ doctor.user.email }}</h6>
+
+      <p class="card-text">Specialization : Radiology <br>Organization : AIIMS</p>
+
+      <a href="/createRequest/{{doctor.id}}/"  class="card-link"><button class="btn btn-sm btn-success">Book Appointment</button></a>
+      <!-- <a href="#0" class="card-link">Another link</a> -->
+    </div>
+  </div> 
+  &nbsp;&nbsp;&nbsp;
+{% endfor %}
+</div>
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+  
+{% endblock javascripts %}

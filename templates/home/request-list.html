@@ -1,0 +1,60 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}View Doctors {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="card">
+    <div class="card-header card-header-warning">
+      <h4 class="card-title">View Request</h4>
+    </div>
+    <div class="card-body table-responsive">
+<table class="table">
+    <thead class="text-warning">
+        <tr>
+            <th class="text-center">#</th>
+            <th>Doctor Name</th>
+            <th>Document Type</th>
+            <th>Status</th>
+            <th class="text-right">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for req in requestList %}
+            <tr>
+                <td class="text-center">{{forloop.counter}}</td>
+                <td>{{req.doctor.user}}</td>
+                <td>{{req.document.file}}</td>
+                <td>{{req.status}}</td>
+                {% if req.status == "Pending" %}
+                <td class="td-actions text-right">
+                    <a href = '/processRequest/{{req.id}}/1/'>
+                        <button type="button" rel="tooltip" class="btn btn-success">
+                            <i class="material-icons">check</i>
+                        </button>
+                    </a>
+                    
+                    <a href = '/processRequest/{{req.id}}/0/'>
+                        <button type="button" rel="tooltip" class="btn btn-danger">
+                            <i class="material-icons">close</i>
+                        </button>
+                    </a>
+                </td>
+                {% endif %}
+            </tr>       
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+  
+{% endblock javascripts %}
