@@ -42,7 +42,37 @@ def scrape_english_news(url=ENGLISH_NEWS):
 
 
 def scrape_arabic_news(url=ARABIC_NEWS):
-    pass
+    r = requests.get(url)
+    html_content = r.content
+    # print(html_content)
+
+    soup = BeautifulSoup(html_content, 'html.parser')
+    articles_anchor_tags = soup.select('#conteneur1 > #dy-h1 > h1 > a')
+    date_p_tags = soup.select('#conteneur1 > p')
+
+    # print(date_p_tags[0])
+
+    list_of_dicts = []
+    for i in range(len(articles_anchor_tags) - 1):
+        headline_pattern = r">(.*?)<"
+        headline = re.findall(headline_pattern, str(articles_anchor_tags[i + 1]))[0]
+
+        article_url_pattern = r'"(.*?)"'
+        article_url = re.findall(article_url_pattern, str(articles_anchor_tags[i + 1]))[0]
+
+        date_pattern = r">(.*?)<"
+        date = re.findall(date_pattern, str(date_p_tags[i + 1]))[0]
+
+        list_of_dicts.append({
+            'headline': headline,
+            'article_url': article_url,
+            'date': date,
+            'website_url': ARABIC_NEWS
+        })
+        
+    # print(list_of_dicts[0])
+    return list_of_dicts
+
 
 def scrape_farsi_news(url=FARSI_NEWS):
     pass
@@ -50,4 +80,4 @@ def scrape_farsi_news(url=FARSI_NEWS):
 def scrape_turkish_news(url=TURKISH_NEWS):
     pass
 
-scrape_english_news()
+scrape_arabic_news()
